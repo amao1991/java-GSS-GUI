@@ -20,6 +20,6 @@
 
 <h2 id = "feature">Feature</h2>
 
-![](http://imgur.com/6tD08au)
+![feature1](http://imgur.com/6tD08au)
 
-![](http://imgur.com/MIrAC9J)
+![feature2](http://imgur.com/MIrAC9J)
