@@ -1,8 +1,6 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import java.io.*;
 
@@ -12,167 +10,392 @@ public class FirstGUI implements ActionListener {
 		JFrame.setDefaultLookAndFeelDecorated(true);
 	    JDialog.setDefaultLookAndFeelDecorated(true);
 	    JFrame demo = new JFrame("Windows Form");
-		demo.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    demo.setSize(500, 400);
+		demo.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    demo.setSize(700, 400);
 	    demo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	    demo.getContentPane().setLayout(new GridLayout(1,1));
 	    
-	    // ç¬¬ä¸€å€‹åˆ†é ï¼Œæª”æ¡ˆåˆ‡å‰²
+	 // ²Ä¤@­Ó¤À­¶¡AÀÉ®×¤Á³Î
 	    JPanel file_cut = new JPanel();
-	    file_cut.setLayout(new GridLayout(7,1));
+	    file_cut.setLayout(new GridLayout(6,1));
 
-	    // é€™å€‹ file_path_panel æ˜¯è¦åŠ å…¥"åŒ¯å…¥æª”æ¡ˆä¹‹è·¯å¾‘" "é¡¯ç¤ºè·¯å¾‘ä½ç½®" "ç€è¦½è³‡æ–™å¤¾çš„ Button" "ç¢ºå®šæŒ‰éˆ•"
+	    // ³o­Ó file_path_panel ¬O­n¥[¤J"¶×¤JÀÉ®×¤§¸ô®|" "Åã¥Ü¸ô®|¦ì¸m" "ÂsÄı¸ê®Æ§¨ªº Button" "½T©w«ö¶s"
 	    JPanel file_path_panel = new JPanel();
 	    file_path_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
 	    file_cut.add(file_path_panel);	    
-
-	    JLabel file = new JLabel("æª”æ¡ˆä½ç½®: ");
-	    file.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel.add(file);
-	    
+	    // ÀÉ®×¦ì¸m¦r¼Ë
+	    JLabel file = new JLabel("ÀÉ®×¦ì¸m: ");
+	    file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    file_path_panel.add(file);    
+	    // Åã¥Ü¸ô®|¦ì¸m
 	    JTextField text1 = new JTextField(15);
-	    text1.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel.add(text1);
-	    
+	    text1.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    file_path_panel.add(text1);    
+	    // ÂsÄı¸ê®Æ§¨ªº Button
 	    Button FileChooser_cut = new Button("...");
-	    FileChooser_cut.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel.add(FileChooser_cut);
-	    
-	    Button enter = new Button("ç¢ºå®š");
-	    enter.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
+	    FileChooser_cut.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    file_path_panel.add(FileChooser_cut); 
+	    // ½T©w³o¬O­n¤Á³ÎªºÀÉ®×
+	    Button enter = new Button("½T©w");
+	    enter.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
 	    file_path_panel.add(enter);
 	    
-	    // é€™å€‹ Panel æ˜¯è¦åœ¨é¸æ“‡æª”æ¡ˆå¾Œï¼Œæ”¾å…¥å¯ä»¥åˆ‡å‰²æ¬„ä½çš„é¸é …
+	    // ³o­Ó Panel ¬O­n¦b¿ï¾ÜÀÉ®×«á¡A©ñ¤J¥i¥H¤Á³ÎÄæ¦ìªº¿ï¶µ
 	    JPanel panel_col = new JPanel();
 	    panel_col.setLayout(new FlowLayout(FlowLayout.LEFT));
 	    file_cut.add(panel_col);
-	    
-	    // æ–°å¢ä¸‹æ‹‰å¼é¸å–®
-	    JMenu all_col = new JMenu("é åˆ‡å‰²æ¬„ä½");
-	    all_col.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));	    
+	    // ·s¼W¤U©Ô¦¡¿ï³æ
+	    JMenu all_col = new JMenu("¹w¤Á³ÎÄæ¦ì");
+	    all_col.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));	    
 	    JTextField select_col_text = new JTextField(5);
-	    select_col_text.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));	    
+	    select_col_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));	    
 	    JMenuBar menubar = new JMenuBar();
 	    menubar.add(all_col);
 	    panel_col.add(menubar);
 	    panel_col.add(select_col_text);
 	    
-	    // æŒ‰éˆ•ï¼šè³‡æ–™åº«åˆ‡å‰²
-	    JPanel start_panel = new JPanel();
-	    start_panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	    file_cut.add(start_panel);
-	    Button start = new Button("è³‡æ–™åº«åˆ‡å‰²");
-	    start.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    start_panel.add(start);
+	    // «ö¶s¡G¸ê®Æ®w¤Á³Î
+	    Button start = new Button("¸ê®Æ®w¤Á³Î");
+	    start.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    file_cut.add(start);
 	    
-	    // æŒ‰éˆ•ï¼šåˆ‡å‰²æ¬„ä½è³‡æ–™åŠ å¯†
-	    JPanel data_encrypt_panel = new JPanel();
-	    data_encrypt_panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	    file_cut.add(data_encrypt_panel);
-	    Button data_encrypt = new Button("åˆ‡å‰²æ¬„ä½è³‡æ–™åŠ å¯†");
-	    data_encrypt.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    data_encrypt_panel.add(data_encrypt);
+	    // «ö¶s¡G¤Á³ÎÄæ¦ì¸ê®Æ¥[±K
+	    Button data_encrypt = new Button("¤Á³ÎÄæ¦ì¸ê®Æ¥[±K");
+	    data_encrypt.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    file_cut.add(data_encrypt);
+
+	    // «ö¶s¡G¸ê®Æ®w¥[¤J§Ç¸¹
+	    Button gg = new Button("¸ê®Æ®w¥[¤J§Ç¸¹");
+	    gg.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    file_cut.add(gg);
 	    
-	    // åŠ å¯†é€²åº¦æ¢
-	    JProgressBar progressbar = new JProgressBar();
-	    progressbar.setOrientation(JProgressBar.HORIZONTAL);
-	    progressbar.setMinimum(0);
-	    progressbar.setMaximum(100);
-	    progressbar.setValue(0);
-	    progressbar.setStringPainted(true);
-	    progressbar.setPreferredSize(new Dimension(200,20));
-	    progressbar.setBorderPainted(true);
-	    file_cut.add(progressbar);
+	    // «ö¶s¡G¸ê®Æ®w¦X¨Ö
+	    Button db_combine = new Button("¸ê®Æ®w¦X¨Ö");
+	    db_combine.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    file_cut.add(db_combine);
 	    
-	    // æŒ‰éˆ•ï¼šè³‡æ–™åº«åŠ å…¥åºè™Ÿ
-	    JPanel gg_panel = new JPanel();
-	    gg_panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	    file_cut.add(gg_panel);
-	    Button gg = new Button("è³‡æ–™åº«åŠ å…¥åºè™Ÿ");
-	    gg.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    gg_panel.add(gg);
-	    
-	    // æŒ‰éˆ•ï¼šè³‡æ–™åº«åˆä½µ
-	    JPanel db_combine_panel = new JPanel();
-	    db_combine_panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	    file_cut.add(db_combine_panel);
-	    Button db_combine = new Button("è³‡æ–™åº«åˆä½µ");
-	    db_combine.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    db_combine_panel.add(db_combine);
-	    
-	    // ç¬¬äºŒå€‹åˆ†é ï¼Œè³‡æ–™åŠ å¯†
+	 // ²Ä¤G­Ó¤À­¶¡A´¶³qªº AES ¥[±K
 	    JPanel col_encrypt = new JPanel();
 	    col_encrypt.setLayout(new GridLayout(5,1));
+
+	    JLabel explain_aes = new JLabel("»¡©ú¡G¤@¯ëªº AES - 256 ¥[±K");
+	    explain_aes.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 18));
+	    explain_aes.setForeground(Color.gray);
+	    col_encrypt.add(explain_aes);
+
+	    // tp2_plaintext_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp2_plaintext_panel = new JPanel();
+	    tp2_plaintext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    col_encrypt.add(tp2_plaintext_panel);
+
+	    JLabel tp2_plaintext_file = new JLabel("Plaintext: ");
+	    JTextField tp2_plaintext_text = new JTextField(15);
+	    Button tp2_plaintext_button = new Button("...");
+
+	    tp2_plaintext_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp2_plaintext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp2_plaintext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp2_plaintext_panel.add(tp2_plaintext_file);   
+	    tp2_plaintext_panel.add(tp2_plaintext_text);
+	    tp2_plaintext_panel.add(tp2_plaintext_button);	 
+
+	    // tp2_ciphertext_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp2_ciphertext_panel = new JPanel();
+	    tp2_ciphertext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    col_encrypt.add(tp2_ciphertext_panel);
+
+	    JLabel tp2_ciphertext_file = new JLabel("Ciphertext: ");
+	    JTextField tp2_ciphertext_text = new JTextField(10);
+	    JLabel cipher_for_hex = new JLabel("/cipher_for_hex.txt");
+	    Button tp2_ciphertext_button = new Button("...");
+
+	    tp2_ciphertext_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp2_ciphertext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    cipher_for_hex.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp2_ciphertext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp2_ciphertext_panel.add(tp2_ciphertext_file);
+	    tp2_ciphertext_panel.add(tp2_ciphertext_text);
+	    tp2_ciphertext_panel.add(cipher_for_hex);
+	    tp2_ciphertext_panel.add(tp2_ciphertext_button);
+
+	    // ²Ä¤@¦æ¬O§_¥[±K
+	    JCheckBox tp2_first_line = new JCheckBox("²Ä¤@¦æ¤£¥[±K");
+	    tp2_first_line.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    col_encrypt.add(tp2_first_line);
+
+	    // Encrypt
+	    Button tp2_encrypt = new Button("Encrypt");
+	    tp2_encrypt.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    col_encrypt.add(tp2_encrypt);   
 	    
-	    // é€™å€‹ file_path_panel_2 æ˜¯è¦åŠ å…¥"åŒ¯å…¥æª”æ¡ˆä¹‹è·¯å¾‘" "é¡¯ç¤ºè·¯å¾‘ä½ç½®" "ç€è¦½è³‡æ–™å¤¾çš„ Button"
-	    JPanel file_path_panel_2 = new JPanel();
-	    file_path_panel_2.setLayout(new FlowLayout(FlowLayout.LEFT));
-	    col_encrypt.add(file_path_panel_2);
+	 // ²Ä¤T­Ó¤À­¶¡A´¶³qªº AES ¸Ñ±K
+	    JPanel col_decrypt = new JPanel();
+	    col_decrypt.setLayout(new GridLayout(7,1));
 
-	    JLabel file2 = new JLabel("æ˜æ–‡æª”æ¡ˆä½ç½®: ");
-	    file2.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel_2.add(file2);	    
+	    JLabel explain_aes_decrypt = new JLabel("»¡©ú¡G¤@¯ëªº AES - 256 ¸Ñ±K");
+	    explain_aes_decrypt.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 18));
+	    explain_aes_decrypt.setForeground(Color.gray);
+	    col_decrypt.add(explain_aes_decrypt);
 
-	    JTextField text2 = new JTextField(15);
-	    text2.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel_2.add(text2);    
+	    // tp3_ciphertext_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp3_ciphertext_panel = new JPanel();
+	    tp3_ciphertext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    col_decrypt.add(tp3_ciphertext_panel);
 
-	    Button FileChooser_encrypt = new Button("...");
-	    FileChooser_encrypt.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel_2.add(FileChooser_encrypt);	 
+	    JLabel tp3_ciphertext_file = new JLabel("Ciphertext: ");
+	    JTextField tp3_ciphertext_text = new JTextField(15);
+	    Button tp3_ciphertext_button = new Button("...");
 
-	    // é€™å€‹ file_path_panel_2 æ˜¯è¦åŠ å…¥"åŠ å¯†å¾Œæª”æ¡ˆä¹‹è·¯å¾‘" "é¡¯ç¤ºè·¯å¾‘ä½ç½®" "ç€è¦½è³‡æ–™å¤¾çš„ Button"
-	    JPanel file_path_panel_3 = new JPanel();
-	    file_path_panel_3.setLayout(new FlowLayout(FlowLayout.LEFT));
-	    col_encrypt.add(file_path_panel_3);
+	    tp3_ciphertext_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_ciphertext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_ciphertext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
 
-	    JLabel file3 = new JLabel("å¯†æ–‡å„²å­˜ä½ç½®: ");
-	    file3.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel_3.add(file3);	    
+	    tp3_ciphertext_panel.add(tp3_ciphertext_file);
+	    tp3_ciphertext_panel.add(tp3_ciphertext_text);
+	    tp3_ciphertext_panel.add(tp3_ciphertext_button);
 
-	    JTextField text3 = new JTextField(10);
-	    text3.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel_3.add(text3);
+	    // tp3_key_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp3_key_panel = new JPanel();
+	    tp3_key_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    col_decrypt.add(tp3_key_panel);
 
-	    JLabel cipher = new JLabel("/cipher.txt");
-	    cipher.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel_3.add(cipher);
+	    JLabel tp3_key_file = new JLabel("Key: ");
+	    JTextField tp3_key_text = new JTextField(15);
+	    Button tp3_key_button = new Button("...");
 
-	    Button FileChooser_cipher = new Button("...");
-	    FileChooser_cipher.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    file_path_panel_3.add(FileChooser_cipher);
+	    tp3_key_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_key_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_key_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
 
-	    JCheckBox first_line = new JCheckBox("ç¬¬ä¸€è¡Œä¸åŠ å¯†");
-	    first_line.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    col_encrypt.add(first_line);
-	    // åŠ å¯†é€²åº¦æ¢
-	    JProgressBar progressbar_2 = new JProgressBar();
-	    progressbar_2.setOrientation(JProgressBar.HORIZONTAL);
-	    progressbar_2.setMinimum(0);
-	    progressbar_2.setMaximum(100);
-	    progressbar_2.setValue(0);
-	    progressbar_2.setStringPainted(true);
-	    progressbar_2.setPreferredSize(new Dimension(200,20));
-	    progressbar_2.setBorderPainted(true);
-	    col_encrypt.add(progressbar_2);
+	    tp3_key_panel.add(tp3_key_file);
+	    tp3_key_panel.add(tp3_key_text);
+	    tp3_key_panel.add(tp3_key_button);
 
-	    // é€™å€‹ Panel åŠ å…¥"åŠ å¯†"çš„æŒ‰æ‰­
-	    JPanel encrypt_last_panel = new JPanel();
-	    encrypt_last_panel.setLayout(new FlowLayout(FlowLayout.CENTER));
-	    col_encrypt.add(encrypt_last_panel);
+	    // tp3_iv_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp3_iv_panel = new JPanel();
+	    tp3_iv_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    col_decrypt.add(tp3_iv_panel);
 
-	    Button encrypt = new Button("åŠ å¯†");
-	    encrypt.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    encrypt_last_panel.add(encrypt);    
+	    JLabel tp3_iv_file = new JLabel("IV: ");
+	    JTextField tp3_iv_text = new JTextField(15);
+	    Button tp3_iv_button = new Button("...");
+
+	    tp3_iv_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_iv_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_iv_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp3_iv_panel.add(tp3_iv_file);
+	    tp3_iv_panel.add(tp3_iv_text);
+	    tp3_iv_panel.add(tp3_iv_button);
+
+	    // tp3_plaintext_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp3_plaintext_panel = new JPanel();
+	    tp3_plaintext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    col_decrypt.add(tp3_plaintext_panel);
+
+	    JLabel tp3_plaintext_file = new JLabel("Plaintext: ");
+	    JTextField tp3_plaintext_text = new JTextField(15);
+	    JLabel tp3_plaintext = new JLabel("/plaintext_for_hex.txt");
+	    Button tp3_plaintext_button = new Button("...");
+
+	    tp3_plaintext_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_plaintext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_plaintext.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp3_plaintext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp3_plaintext_panel.add(tp3_plaintext_file);
+	    tp3_plaintext_panel.add(tp3_plaintext_text);
+	    tp3_plaintext_panel.add(tp3_plaintext);
+	    tp3_plaintext_panel.add(tp3_plaintext_button);
+
+	    // ²Ä¤@¦æ¬O§_¸Ñ±K
+	    JCheckBox tp3_first_line_dec_or_not = new JCheckBox("²Ä¤@¦æ¤£¸Ñ±K");
+	    tp3_first_line_dec_or_not.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    col_decrypt.add(tp3_first_line_dec_or_not);
+
+	    // Decrypt
+	    Button tp3_dncrypt = new Button("Decrypt");
+	    tp3_dncrypt.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    col_decrypt.add(tp3_dncrypt);
+	    
+	 // ²Ä¥|­Ó¤À­¶¡AAES-ASCII-Encrypt
+	    JPanel aes_ascii_Encrypt = new JPanel();
+	    aes_ascii_Encrypt.setLayout(new GridLayout(5,1));
+
+	    JLabel explain_ascii = new JLabel("»¡©ú¡GAES ¥[±K¡A¥H ASCII ®æ¦¡¿é¥X¥B±Æ°£±±¨î¦r¤¸");
+	    explain_ascii.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 18));
+	    explain_ascii.setForeground(Color.gray);
+	    aes_ascii_Encrypt.add(explain_ascii);
+
+	    // tp4_plaintext_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp4_plaintext_panel = new JPanel();
+	    tp4_plaintext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    aes_ascii_Encrypt.add(tp4_plaintext_panel);
+
+	    JLabel tp4_plaintext_file = new JLabel("Plaintext: ");
+	    JTextField tp4_plaintext_text = new JTextField(15);
+	    Button tp4_plaintext_button = new Button("...");
+
+	    tp4_plaintext_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp4_plaintext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp4_plaintext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp4_plaintext_panel.add(tp4_plaintext_file);	    
+	    tp4_plaintext_panel.add(tp4_plaintext_text);    
+	    tp4_plaintext_panel.add(tp4_plaintext_button);
+
+	    // tp4_ciphertext_panel "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp4_ciphertext_panel = new JPanel();
+	    tp4_ciphertext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    aes_ascii_Encrypt.add(tp4_ciphertext_panel);
+
+	    JLabel tp4_ciphertext_file = new JLabel("Ciphertext: ");
+	    JTextField tp4_ciphertext_text = new JTextField(10);
+	    JLabel tp4_cipher = new JLabel("/cipher_for_ascii.txt");
+	    Button tp4_ciphertext_button = new Button("...");
+
+	    tp4_ciphertext_file.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp4_ciphertext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp4_cipher.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp4_ciphertext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp4_ciphertext_panel.add(tp4_ciphertext_file);	    
+	    tp4_ciphertext_panel.add(tp4_ciphertext_text);
+	    tp4_ciphertext_panel.add(tp4_cipher);
+	    tp4_ciphertext_panel.add(tp4_ciphertext_button);
+
+	    // ²Ä¤@¦æ¬O§_¥[±K
+	    JCheckBox tp4_first_line = new JCheckBox("²Ä¤@¦æ¤£¥[±K");
+	    tp4_first_line.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    aes_ascii_Encrypt.add(tp4_first_line);
+
+	    // Encrypt
+	    Button tp4_encrypt = new Button("Encrypt");
+	    tp4_encrypt.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    aes_ascii_Encrypt.add(tp4_encrypt);
+	    
+	 // ²Ä¤­­Ó¤À­¶¡AAES_ASCII_Decrypt
+	    JPanel aes_ascii_Decrypt = new JPanel();
+	    aes_ascii_Decrypt.setLayout(new GridLayout(8, 1));
+
+	    JLabel explain_decrypt = new JLabel("»¡©ú¡G¥H ASCII ±Æ°£±±¨î¦r¤¸¶i¦æ AES ¸Ñ±K");
+	    explain_decrypt.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 18));
+	    explain_decrypt.setForeground(Color.gray);
+	    aes_ascii_Decrypt.add(explain_decrypt);
+
+	    // ciphertext: "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp5_ciphertext_panel = new JPanel();
+	    tp5_ciphertext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    aes_ascii_Decrypt.add(tp5_ciphertext_panel);
+
+	    JLabel tp5_ciphertext_label = new JLabel("Ciphertext: ");
+	    JTextField tp5_ciphertext_text = new JTextField(15);
+	    Button tp5_ciphertext_button = new Button("...");
+
+	    tp5_ciphertext_label.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_ciphertext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_ciphertext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp5_ciphertext_panel.add(tp5_ciphertext_label);
+	    tp5_ciphertext_panel.add(tp5_ciphertext_text);
+	    tp5_ciphertext_panel.add(tp5_ciphertext_button);
+
+	    // Key: "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp5_key_panel = new JPanel();
+	    tp5_key_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    aes_ascii_Decrypt.add(tp5_key_panel);
+
+	    JLabel tp5_key_label = new JLabel("Key: ");
+	    JTextField tp5_key_text = new JTextField(15);
+	    Button tp5_key_button = new Button("...");
+
+	    tp5_key_label.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_key_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_key_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp5_key_panel.add(tp5_key_label);
+	    tp5_key_panel.add(tp5_key_text);
+	    tp5_key_panel.add(tp5_key_button);
+
+	    // IV: "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp5_iv_panel = new JPanel();
+	    tp5_iv_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    aes_ascii_Decrypt.add(tp5_iv_panel);
+
+	    JLabel tp5_iv_label = new JLabel("IV: ");
+	    JTextField tp5_iv_text = new JTextField(15);
+	    Button tp5_iv_button = new Button("...");
+
+	    tp5_iv_label.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_iv_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_iv_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp5_iv_panel.add(tp5_iv_label);
+	    tp5_iv_panel.add(tp5_iv_text);
+	    tp5_iv_panel.add(tp5_iv_button);
+
+	    // Record: "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp5_record_panel = new JPanel();
+	    tp5_record_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    aes_ascii_Decrypt.add(tp5_record_panel);
+
+	    JLabel tp5_record_label = new JLabel("Record: ");
+	    JTextField tp5_record_text = new JTextField(15);
+	    Button tp5_record_button = new Button("...");
+
+	    tp5_record_label.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_record_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_record_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp5_record_panel.add(tp5_record_label);
+	    tp5_record_panel.add(tp5_record_text);
+	    tp5_record_panel.add(tp5_record_button);
+
+	    // Plaintext: "¸ô®|¡BÅã¥Ü¸ô®|¡BÂsÄı«ö¶s"
+	    JPanel tp5_plaintext_panel = new JPanel();
+	    tp5_plaintext_panel.setLayout(new FlowLayout(FlowLayout.LEFT));
+	    aes_ascii_Decrypt.add(tp5_plaintext_panel);
+
+	    JLabel tp5_plaintext_label = new JLabel("Plaintext: ");
+	    JTextField tp5_plaintext_text = new JTextField(15);
+	    JLabel tp5_plaintext_label_2 = new JLabel("/plaintext_for_ascii.txt");
+	    Button tp5_plaintext_button = new Button("...");
+
+	    tp5_plaintext_label.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_plaintext_text.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_plaintext_label_2.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp5_plaintext_button.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+
+	    tp5_plaintext_panel.add(tp5_plaintext_label);
+	    tp5_plaintext_panel.add(tp5_plaintext_text);
+	    tp5_plaintext_panel.add(tp5_plaintext_label_2);
+	    tp5_plaintext_panel.add(tp5_plaintext_button);
+
+	    // first line or not
+	    JCheckBox tp5_first_line_dec_or_not = new JCheckBox("²Ä¤@¦æ¤£¸Ñ±K");
+	    tp5_first_line_dec_or_not.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    aes_ascii_Decrypt.add(tp5_first_line_dec_or_not);
+
+	    // Decrypt
+	    Button ascii_Decrypt = new Button("Decrypt");
+	    ascii_Decrypt.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    aes_ascii_Decrypt.add(ascii_Decrypt);
 	    
 	    JTabbedPane tp = new JTabbedPane();
-	    tp.setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
-	    tp.addTab("æ‰€æœ‰åŠŸèƒ½", file_cut);
-	    tp.addTab("è³‡æ–™åŠ å¯†", col_encrypt);
+	    tp.setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
+	    tp.addTab("¸ê®Æ®w¤Á³Î¥[±K", file_cut);
+	    tp.addTab("AES-Hex-Encrypt", col_encrypt);
+	    tp.addTab("AES-Hex-Decrypt", col_decrypt);
+	    tp.addTab("AES-ASCII-Encrypt", aes_ascii_Encrypt);
+	    tp.addTab("AES-ASCII-Decrypt", aes_ascii_Decrypt);
 	    demo.add(tp);
-	     
-	    // ç¬¬ä¸€å€‹åˆ†é å‹•ä½œ
-	    // è®€å–åŸå§‹è³‡æ–™åº«ä¹‹æª”æ¡ˆè·¯å¾‘
+	    
+//	    demo.add(file_cut);
+ 
+	 // ²Ä¤@­Ó¤À­¶°Ê§@¡ADMexpress
+	    // Åª¨ú­ì©l¸ê®Æ®w¤§ÀÉ®×¸ô®|
 	    FileChooser_cut.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	JFileChooser chooser = new JFileChooser();
@@ -182,13 +405,13 @@ public class FirstGUI implements ActionListener {
 	        		text1.setText(chooser.getSelectedFile().getAbsolutePath());
 	        	}
 	        	
-	        	// æŒ‰ä¸‹ç¢ºå®šä¹‹å¾Œæ‰çœŸæ­£è®€å–æ‰€é¸ä¹‹æª”æ¡ˆå…§å®¹
+	        	// «ö¤U½T©w¤§«á¤~¯u¥¿Åª¨ú©Ò¿ï¤§ÀÉ®×¤º®e
 	        	enter.addActionListener(new ActionListener() {
 	        		@SuppressWarnings("deprecation")
 					public void actionPerformed(ActionEvent e){
 	    	        	FileReader fileReader;
-	    	        	FileWriter fileWriter_all; // å¯«å…¥"æ‰€æœ‰æ¬„ä½"ä¹‹æª”æ¡ˆ
-	    	        	FileWriter fileWriter_bat; // å¯«å…¥åˆ‡å‰²æ¬„ä½çš„æ‰¹æ¬¡æª”
+	    	        	FileWriter fileWriter_all; // ¼g¤J"©Ò¦³Äæ¦ì"¤§ÀÉ®×
+	    	        	FileWriter fileWriter_bat; // ¼g¤J¤Á³ÎÄæ¦ìªº§å¦¸ÀÉ
 	    	        	JRadioButtonMenuItem[] item;
 	    	        	ButtonGroup bg = new ButtonGroup();
 	    	        	
@@ -196,16 +419,16 @@ public class FirstGUI implements ActionListener {
 	    					fileReader = new FileReader(chooser.getSelectedFile());
 	    					BufferedReader bufferedReader = new BufferedReader(fileReader);
 	    					
-	    					// å¯«å…¥æ‰¹æ¬¡æª”
+	    					// ¼g¤J§å¦¸ÀÉ
 	    					fileWriter_bat = new FileWriter("C:/Users/Mao/Desktop/GSS-WindowsForm/1_SegmentNo.bat");
 	    					BufferedWriter bufferWriter_bat = new BufferedWriter(fileWriter_bat);
 	    					bufferWriter_bat.write("@echo off");
 	    					bufferWriter_bat.newLine();
-	    					bufferWriter_bat.write("rem æ‰€æœ‰æ¬„ä½è¨­å®šæ–¼2_all_col.txt");
+	    					bufferWriter_bat.write("rem ©Ò¦³Äæ¦ì³]©w©ó2_all_col.txt");
 	    					bufferWriter_bat.newLine();
 	    					bufferWriter_bat.write("set SourceFile=" + chooser.getSelectedFile().getAbsolutePath());
 	    					bufferWriter_bat.newLine();
-	    					bufferWriter_bat.write("rem åˆ‡å‰²æ¬„ä½è¨­å®šæ–¼3_select_col.txt");
+	    					bufferWriter_bat.write("rem ¤Á³ÎÄæ¦ì³]©w©ó3_select_col.txt");
 	    					bufferWriter_bat.newLine();
 	    					bufferWriter_bat.write("set SegmentFile=C:/Users/Mao/Desktop/GSS-WindowsForm/5_select_db.txt");
 	    					bufferWriter_bat.newLine();
@@ -214,25 +437,25 @@ public class FirstGUI implements ActionListener {
 	    					bufferWriter_bat.write("dmxjob /RUN C:/Users/Mao/Desktop/GSS-WindowsForm/Segment.dxj 2>Segment2log.txt");
 	    					bufferWriter_bat.newLine();
 	    					
-	    					// é¸æ“‡è¦åˆ‡å‰²çš„æ¬„ä½
+	    					// ¿ï¾Ü­n¤Á³ÎªºÄæ¦ì
 	    					fileWriter_all = new FileWriter("C:/Users/Mao/Desktop/GSS-WindowsForm/2_all_col.txt");
 	    					BufferedWriter bufferWriter_all = new BufferedWriter(fileWriter_all);
 	    					
-	    		  	    	String line = bufferedReader.readLine();  // line = ç¬¬ä¸€è¡Œ = æ¬„ä½åç¨±
+	    		  	    	String line = bufferedReader.readLine();  // line = ²Ä¤@¦æ = Äæ¦ì¦WºÙ
 	    		  	    	
-	    		  	    	// ç›´æ¥å°‡ç¬¬ä¸€è¡Œ(æ¬„ä½åç¨±)å¯«å…¥"æ‰€æœ‰æ¬„ä½"ä¹‹æª”æ¡ˆ
+	    		  	    	// ª½±µ±N²Ä¤@¦æ(Äæ¦ì¦WºÙ)¼g¤J"©Ò¦³Äæ¦ì"¤§ÀÉ®×
 	    		  	    	bufferWriter_all.write("/delimitedrecordlayout AllList{");
 	    		  	    	bufferWriter_all.write(line); 
 	    		  	    	bufferWriter_all.write("}");
 	    		  	    	bufferWriter_all.flush();
 	    		  	    	bufferWriter_all.close();
 
-	    		  	    	String[] splitted_line = line.split(",");  // ç”¨é€—è™Ÿåˆ‡å‰²å­—ä¸²
-	    		  	    	item = new JRadioButtonMenuItem[splitted_line.length]; // è½‰æˆé™£åˆ—æ–¹å¼è™•ç†
+	    		  	    	String[] splitted_line = line.split(",");  // ¥Î³r¸¹¤Á³Î¦r¦ê
+	    		  	    	item = new JRadioButtonMenuItem[splitted_line.length]; // Âà¦¨°}¦C¤è¦¡³B²z
 	    		  	    	
 	    		  	    	for (int i = 0; i < splitted_line.length; i++){
 	    		  	    		item[i] = new JRadioButtonMenuItem(splitted_line[i]);
-	    		  	    		item[i].setFont(new Font("æ–°ç´°æ˜é«”", Font.BOLD, 20));
+	    		  	    		item[i].setFont(new Font("·s²Ó©úÅé", Font.BOLD, 20));
 	    		  	    		item[i].setActionCommand(item[i].getLabel());
 	    		  	    		all_col.add(item[i]);
 	    		  	    		bg.add(item[i]);
@@ -249,7 +472,7 @@ public class FirstGUI implements ActionListener {
 //	    		        		}
 //	    		  	    	});
 
-	    		  	    	// æŒ‰ä¸‹é–‹å§‹åˆ‡å‰²å¾Œï¼Œå¯«å…¥è¦åˆ‡å‰²ä¹‹æ¬„ä½(.txt)ã€å‰©ä¸‹çš„æ¬„ä½(.txt)ï¼Œä¸¦é–‹å§‹åˆ‡å‰² 
+	    		  	    	// «ö¤U¶}©l¤Á³Î«á¡A¼g¤J­n¤Á³Î¤§Äæ¦ì(.txt)¡B³Ñ¤UªºÄæ¦ì(.txt)¡A¨Ã¶}©l¤Á³Î
 	    		  	    	start.addActionListener(new ActionListener() {
 	    		        		public void actionPerformed(ActionEvent e){
 	    		        			String select_col = bg.getSelection().getActionCommand();
@@ -258,7 +481,7 @@ public class FirstGUI implements ActionListener {
 	    		        			FileWriter fileWriter_remain_col;
 	    		        			FileWriter fileWriter_select_col_No;
 	    		        			try {
-	    		        				// å¯«å…¥è¦åˆ‡å‰²ä¹‹æ¬„ä½
+	    		        				// ¼g¤J­n¤Á³Î¤§Äæ¦ì
 	    		        				fileWriter_select_col = new FileWriter("C:/Users/Mao/Desktop/GSS-WindowsForm/3_select_col.txt");
 										BufferedWriter bufferWriter_select_col = new BufferedWriter(fileWriter_select_col);
 										bufferWriter_select_col.write("/delimitedrecordlayout SelectList{");
@@ -267,7 +490,7 @@ public class FirstGUI implements ActionListener {
 										bufferWriter_select_col.flush();
 										bufferWriter_select_col.close();
 										
-										// å¯«å…¥è¦åˆ‡å‰²æ¬„ä½åŠ ä¸Šåºè™Ÿè®Šæ•¸(åˆä½µæ™‚ä½¿ç”¨)
+										// ¼g¤J­n¤Á³ÎÄæ¦ì¥[¤W§Ç¸¹ÅÜ¼Æ(¦X¨Ö®É¨Ï¥Î)
 										fileWriter_select_col_No = new FileWriter("C:/Users/Mao/Desktop/GSS-WindowsForm/8_select_col_No.txt");
 										BufferedWriter bufferWriter_select_col_No = new BufferedWriter(fileWriter_select_col_No);
 										bufferWriter_select_col_No.write("/delimitedrecordlayout SelectList_No{");
@@ -276,7 +499,7 @@ public class FirstGUI implements ActionListener {
 										bufferWriter_select_col_No.flush();
 										bufferWriter_select_col_No.close();
 										
-										// å¯«å…¥å‰©ä¸‹çš„æ¬„ä½ï¼Œä¸¦åŠ å…¥åºè™Ÿè®Šæ•¸
+										// ¼g¤J³Ñ¤UªºÄæ¦ì¡A¨Ã¥[¤J§Ç¸¹ÅÜ¼Æ
 										fileWriter_remain_col = new FileWriter("C:/Users/Mao/Desktop/GSS-WindowsForm/4_remain_col_No.txt");
 										BufferedWriter bufferWriter_remain_col = new BufferedWriter(fileWriter_remain_col);
 										bufferWriter_remain_col.write("/delimitedrecordlayout SelectList_2{");
@@ -291,7 +514,7 @@ public class FirstGUI implements ActionListener {
 										bufferWriter_remain_col.flush();
 										bufferWriter_remain_col.close();
 										
-										// åŸ·è¡Œ dmexpress
+										// °õ¦æ dmexpress
 										Runtime.getRuntime().exec("C:/Users/Mao/Desktop/GSS-WindowsForm/1_SegmentNo.bat");
 									
 										bufferWriter_select_col.close();
@@ -311,7 +534,7 @@ public class FirstGUI implements ActionListener {
     	    	    								e1.printStackTrace();
     	    	    							}
 
-	    	    		        			// åŠ å¯†å¾Œçš„è³‡æ–™ï¼Œç”¨ DMExpress åŠ ä¸Šåºè™Ÿ
+	    	    		        			// ¥[±K«áªº¸ê®Æ¡A¥Î DMExpress ¥[¤W§Ç¸¹
 	    	    		        			gg.addActionListener(new ActionListener() {
 	    	    	    		        		public void actionPerformed(ActionEvent e){
 	    	    	    		        			try{
@@ -359,41 +582,34 @@ public class FirstGUI implements ActionListener {
 			}
 		});
 	    
-	    // ç¬¬äºŒåˆ†é å‹•ä½œ
-	    FileChooser_encrypt.addActionListener(new ActionListener() {
+	 // ²Ä¤G¤À­¶°Ê§@¡AAES Hex Encrypt
+	    tp2_plaintext_button.addActionListener(new ActionListener() {
 	        public void actionPerformed(ActionEvent e) {
 	        	JFileChooser chooser = new JFileChooser();
 	        	chooser.setMultiSelectionEnabled(false);
 	        	chooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
 	        	if (chooser.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
-	        		text2.setText(chooser.getSelectedFile().getAbsolutePath());
+	        		tp2_plaintext_text.setText(chooser.getSelectedFile().getAbsolutePath());
 	        	}
 	        	String inputfile = chooser.getSelectedFile().getAbsolutePath();
 	        	
-	        	FileChooser_cipher.addActionListener(new ActionListener() {
+	        	tp2_ciphertext_button.addActionListener(new ActionListener() {
 	    	        public void actionPerformed(ActionEvent e) {
 	    	        	JFileChooser chooser2 = new JFileChooser();
 	    	        	chooser2.setMultiSelectionEnabled(false);
 	    	        	chooser2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 	    	        	if (chooser2.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
-	    	        		text3.setText(chooser2.getSelectedFile().getAbsolutePath());
+	    	        		tp2_ciphertext_text.setText(chooser2.getSelectedFile().getAbsolutePath());
 	    	        	}
-	    	        	String outputfile = chooser2.getSelectedFile().getAbsolutePath() + "/cipher.txt";
-	    	        	System.out.println(outputfile);
+	    	        	String outputfile = chooser2.getSelectedFile().getAbsolutePath();
 
-	    	        	encrypt.addActionListener(new ActionListener() {
+	    	        	tp2_encrypt.addActionListener(new ActionListener() {
 	    	        		public void actionPerformed(ActionEvent e){	
-//	    	        			new Thread(){
-//	    	        				public void run(){
-//	    	        					ProgressMonitor monitor = new ProgressMonitor(null, "Encrypt...", "Encrypt...", 0, 100);
-//	    	        				}
-//	    	        			}.start();
-//	    	        		}
-	    	        		if (first_line.isSelected()){
-    	    	        		AES.Encrypt_no_first_line(inputfile, outputfile);
-	    	    	        	}
-    	    	        	else 
-    	    	        		AES.Encrypt_yes_first_line(inputfile, outputfile);
+		    	        		if (tp2_first_line.isSelected()){
+	    	    	        		AES_Hex_Encrypt.Encrypt_no_first_line(inputfile, outputfile);
+		    	    	        	}
+	    	    	        	else 
+	    	    	        		AES_Hex_Encrypt.Encrypt_yes_first_line(inputfile, outputfile);
 	    	        		}
 	    	        	});    
 	    	        }
@@ -405,6 +621,219 @@ public class FirstGUI implements ActionListener {
 				return null;
 			}
 		});
+	    
+	 // ²Ä¤T¤À­¶°Ê§@¡AAES Hex Decrypt
+	    tp3_ciphertext_button.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		JFileChooser chooser_1 = new JFileChooser();
+	    		chooser_1.setMultiSelectionEnabled(false);
+	    		chooser_1.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	    		if (chooser_1.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	        		tp3_ciphertext_text.setText(chooser_1.getSelectedFile().getAbsolutePath());
+	        	}
+	    		String input_cipher = chooser_1.getSelectedFile().getAbsolutePath();
+	    		
+	    		tp3_key_button.addActionListener(new ActionListener() {
+	    	    	public void actionPerformed(ActionEvent e) {
+	    	    		JFileChooser chooser_2 = new JFileChooser();
+	    	    		chooser_2.setMultiSelectionEnabled(false);
+	    	    		chooser_2.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	    	    		if (chooser_2.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	        		tp3_key_text.setText(chooser_2.getSelectedFile().getAbsolutePath());
+	    	        	}
+	    	    		String input_key = chooser_2.getSelectedFile().getAbsolutePath();
+	    	    		
+	    	    		tp3_iv_button.addActionListener(new ActionListener() {
+	    	    	    	public void actionPerformed(ActionEvent e) {
+	    	    	    		JFileChooser chooser_3 = new JFileChooser();
+	    	    	    		chooser_3.setMultiSelectionEnabled(false);
+	    	    	    		chooser_3.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	    	    	    		if (chooser_3.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	    	        		tp3_iv_text.setText(chooser_3.getSelectedFile().getAbsolutePath());
+	    	    	        	}
+	    	    	    		String input_iv = chooser_3.getSelectedFile().getAbsolutePath();
+	    	    	    		
+	    	    	    		tp3_plaintext_button.addActionListener(new ActionListener() {
+	    	    	    	    	public void actionPerformed(ActionEvent e) {
+	    	    	    	    		JFileChooser chooser_4 = new JFileChooser();
+	    	    	    	    		chooser_4.setMultiSelectionEnabled(false);
+	    	    	    	    		chooser_4.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+	    	    	    	    		if (chooser_4.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	    	    	        		tp3_plaintext_text.setText(chooser_4.getSelectedFile().getAbsolutePath());
+	    	    	    	        	}
+	    	    	    	    		String outputPath = chooser_4.getSelectedFile().getAbsolutePath();
+	    	    	    	    		
+	    	    	    	    		tp3_dncrypt.addActionListener(new ActionListener() {
+	    	    	    	    	    	public void actionPerformed(ActionEvent e) {
+	    	    	    	    	    		if (tp3_first_line_dec_or_not.isSelected()){
+	    	    	    	    	        		try {
+	    	    										AES_Hex_Decrypt.Decrypt_no_first_line(input_cipher, input_key, input_iv, outputPath);
+	    	    									} catch (Exception e1) {
+	    	    										// TODO Auto-generated catch block
+	    	    										e1.printStackTrace();
+	    	    									}
+	    	    		    	    	        	} 
+	    	    	    	    	        	else
+	    	    									try {
+	    	    										AES_Hex_Decrypt.Decrypt_yes_first_line(input_cipher, input_key, input_iv, outputPath);
+	    	    									} catch (Exception e1) {
+	    	    										// TODO Auto-generated catch block
+	    	    										e1.printStackTrace();
+	    	    									}
+	    	    	    	    	    	}
+	    	    	    	    		});
+	    	    	    	    	}
+	    	    	    		});
+	    	    	    	}
+	    	    		});
+	    	    	}
+	    		});
+	    	}
+
+			private Component getContentPane() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+	    });
+	    
+	 // ²Ä¥|¤À­¶°Ê§@¡AAES ASCII Encrypt
+	    tp4_plaintext_button.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		JFileChooser chooser_1 = new JFileChooser();
+	    		chooser_1.setMultiSelectionEnabled(false);
+	    		chooser_1.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	        	if (chooser_1.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	        		tp4_plaintext_text.setText(chooser_1.getSelectedFile().getAbsolutePath());
+	        	}
+	        	String inputfile = chooser_1.getSelectedFile().getAbsolutePath();
+	        	
+	        	tp4_ciphertext_button.addActionListener(new ActionListener() {
+	    	        public void actionPerformed(ActionEvent e) {
+	    	        	JFileChooser chooser2 = new JFileChooser();
+	    	        	chooser2.setMultiSelectionEnabled(false);
+	    	        	chooser2.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+	    	        	if (chooser2.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	        		tp4_ciphertext_text.setText(chooser2.getSelectedFile().getAbsolutePath());
+	    	        	}
+	    	        	String outputfile = chooser2.getSelectedFile().getAbsolutePath();
+	    	        	
+	    	        	tp4_encrypt.addActionListener(new ActionListener() {
+	    	    	        public void actionPerformed(ActionEvent e) {
+	    	    	        	if (tp4_first_line.isSelected()){
+	    	    	        		try {
+										AES_ASCII_Encrypt.Encrypt_no_first_line(inputfile, outputfile);
+									} catch (Exception e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
+		    	    	        	} 
+	    	    	        	else
+									try {
+										AES_ASCII_Encrypt.Encrypt_yes_first_line(inputfile, outputfile);
+									} catch (Exception e1) {
+										// TODO Auto-generated catch block
+										e1.printStackTrace();
+									}
+	    	    	        }
+	    	        	});
+	    	        }
+	        	});
+	        	
+	        	
+	    	}
+
+			private Component getContentPane() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+	    });
+	    
+	 // ²Ä¤­¤À­¶°Ê§@¡AAES ASCII Decrypt
+	    tp5_ciphertext_button.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent e) {
+	    		JFileChooser chooser_1 = new JFileChooser();
+	    		chooser_1.setMultiSelectionEnabled(false);
+	    		chooser_1.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	        	if (chooser_1.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	        		tp5_ciphertext_text.setText(chooser_1.getSelectedFile().getAbsolutePath());
+	        	}
+	        	String input_cipher = chooser_1.getSelectedFile().getAbsolutePath();
+	        	
+	        	tp5_key_button.addActionListener(new ActionListener() {
+	    	    	public void actionPerformed(ActionEvent e) {
+	    	    		JFileChooser chooser_2 = new JFileChooser();
+	    	    		chooser_2.setMultiSelectionEnabled(false);
+	    	    		chooser_2.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	    	        	if (chooser_2.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	        		tp5_key_text.setText(chooser_2.getSelectedFile().getAbsolutePath());
+	    	        	}
+	    	        	String input_key = chooser_2.getSelectedFile().getAbsolutePath();
+	    	        	
+	    	        	tp5_iv_button.addActionListener(new ActionListener() {
+	    	    	    	public void actionPerformed(ActionEvent e) {
+	    	    	    		JFileChooser chooser_3 = new JFileChooser();
+	    	    	    		chooser_3.setMultiSelectionEnabled(false);
+	    	    	    		chooser_3.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	    	    	        	if (chooser_3.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	    	        		tp5_iv_text.setText(chooser_3.getSelectedFile().getAbsolutePath());
+	    	    	        	}
+	    	    	        	String input_iv = chooser_3.getSelectedFile().getAbsolutePath();
+	    	    	        	
+	    	    	        	tp5_record_button.addActionListener(new ActionListener() {
+	    	    	    	    	public void actionPerformed(ActionEvent e) {
+	    	    	    	    		JFileChooser chooser_4 = new JFileChooser();
+	    	    	    	    		chooser_4.setMultiSelectionEnabled(false);
+	    	    	    	    		chooser_4.setFileSelectionMode(JFileChooser.FILES_ONLY);
+	    	    	    	        	if (chooser_4.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	    	    	        		tp5_record_text.setText(chooser_4.getSelectedFile().getAbsolutePath());
+	    	    	    	        	}
+	    	    	    	        	String input_record = chooser_4.getSelectedFile().getAbsolutePath();
+	    	    	    	        	
+	    	    	    	        	tp5_plaintext_button.addActionListener(new ActionListener() {
+	    	    	    	    	    	public void actionPerformed(ActionEvent e) {
+	    	    	    	    	    		JFileChooser chooser_5 = new JFileChooser();
+	    	    	    	    	    		chooser_5.setMultiSelectionEnabled(false);
+	    	    	    	    	    		chooser_5.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+	    	    	    	    	        	if (chooser_5.showOpenDialog(getContentPane()) == JFileChooser.APPROVE_OPTION) {
+	    	    	    	    	        		tp5_plaintext_text.setText(chooser_5.getSelectedFile().getAbsolutePath());
+	    	    	    	    	        	}
+	    	    	    	    	        	String outputPath = chooser_5.getSelectedFile().getAbsolutePath();
+	    	    	    	    	        	
+	    	    	    	    	        	ascii_Decrypt.addActionListener(new ActionListener() {
+	    	    	    	    	    	        public void actionPerformed(ActionEvent e) {
+	    	    	    	    	    	        	if (tp5_first_line_dec_or_not.isSelected()){
+    	    	    										try {
+																AES_ASCII_Decrypt.Decrypt_no_first_line(input_cipher, input_key, input_iv, input_record, outputPath);
+															} 
+    	    	    										catch (Exception e1) {
+																// TODO Auto-generated catch block
+																e1.printStackTrace();
+															}
+	    	    	    								} 
+	    	    	    	    	    	        	else
+															try {
+																AES_ASCII_Decrypt.Decrypt_yes_first_line(input_cipher, input_key, input_iv, input_record, outputPath);
+															} catch (Exception e1) {
+																// TODO Auto-generated catch block
+																e1.printStackTrace();
+															}
+	    	    	    	    	    	        }
+	    	    	    	    	        	});
+	    	    	    	    	    	}
+	    	    	    	        	});
+	    	    	    	    	}
+	    	    	        	});
+	    	    	    	}
+	    	        	});
+	    	    	}
+	        	});
+	    	}
+
+			private Component getContentPane() {
+				// TODO Auto-generated method stub
+				return null;
+			}
+	    });
 
 	    demo.setVisible(true);
 	    
