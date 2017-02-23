@@ -13,11 +13,17 @@ public class FirstGUI implements ActionListener {
 		demo.setFont(new Font("新細明體", Font.BOLD, 20));
 	    demo.setSize(700, 400);
 	    demo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    demo.getContentPane().setLayout(new GridLayout(1,1));
+	    demo.getContentPane().setLayout(new GridLayout(1, 1));
 	    
 	 // 第一個分頁，檔案切割
 	    JPanel file_cut = new JPanel();
-	    file_cut.setLayout(new GridLayout(6,1));
+	    file_cut.setLayout(new GridLayout(7, 1));
+	    
+	    // explain DMExpress
+	    JLabel explain_DMExpress = new JLabel("說明：資料庫切割、加密、合併");
+	    explain_DMExpress.setFont(new Font("新細明體", Font.BOLD, 18));
+	    explain_DMExpress.setForeground(Color.gray);
+	    file_cut.add(explain_DMExpress);
 
 	    // 這個 file_path_panel 是要加入"匯入檔案之路徑" "顯示路徑位置" "瀏覽資料夾的 Button" "確定按鈕"
 	    JPanel file_path_panel = new JPanel();
@@ -385,11 +391,11 @@ public class FirstGUI implements ActionListener {
 	    
 	    JTabbedPane tp = new JTabbedPane();
 	    tp.setFont(new Font("新細明體", Font.BOLD, 20));
-	    tp.addTab("資料庫切割加密", file_cut);
-	    tp.addTab("AES-Hex-Encrypt", col_encrypt);
-	    tp.addTab("AES-Hex-Decrypt", col_decrypt);
-	    tp.addTab("AES-ASCII-Encrypt", aes_ascii_Encrypt);
-	    tp.addTab("AES-ASCII-Decrypt", aes_ascii_Decrypt);
+	    tp.addTab("All Functions", file_cut);
+	    tp.addTab("Enc for Hex", col_encrypt);
+	    tp.addTab("Dec for Hex", col_decrypt);
+	    tp.addTab("Enc for ASCII", aes_ascii_Encrypt);
+	    tp.addTab("Dec for ASCII", aes_ascii_Decrypt);
 	    demo.add(tp);
 	    
 //	    demo.add(file_cut);
